@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     parameters { 
-         string(name: 'tomcat_dev', defaultValue: '35.166.210.154', description: 'Staging Server')
+         string(name: 'tomcat_dev', defaultValue: '10.0.0.12', description: 'Staging Server')
          string(name: 'tomcat_prod', defaultValue: '34.209.233.6', description: 'Production Server')
     } 
 
@@ -31,11 +31,11 @@ stages{
                     }
                 }
 
-                stage ("Deploy to Production"){
-                    steps {
-                        sh "scp -i /var/lib/jenkins/key.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
-                    }
-                }
+//                stage ("Deploy to Production"){
+//                    steps {
+//                        sh "scp -i /var/lib/jenkins/key.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
+//                    }
+//                }
             }
         }
     }
